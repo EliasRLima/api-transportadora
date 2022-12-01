@@ -1,13 +1,13 @@
-package com.ifma.api;
+package edu.ifma.lpweb.freteapi;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TransportadoraApplicationTests {
+class FreteapiApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }
