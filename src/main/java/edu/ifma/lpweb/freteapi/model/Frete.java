@@ -1,9 +1,18 @@
 package edu.ifma.lpweb.freteapi.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
 @Entity
+@Getter
+@Setter
 public class Frete {
 
     @Id
@@ -19,54 +28,6 @@ public class Frete {
 
     @ManyToOne
     private Cidade cidade;
-
-    public int getId() {
-        return this.id;
-    }
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Cliente getCliente() {
-        return this.cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
-
-
-    public Cidade getCidade() {
-        return this.cidade;
-    }
-
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
-    }
-
-    public String getDescricao() {
-        return this.descricao;
-    }
-
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-
-    public Float getPeso() {
-        return this.peso;
-    }
-
-
-    public void setPeso(Float peso) {
-        this.peso = peso;
-    }
-
-    public BigDecimal getValor() {
-        return this.valor;
-    }
 
     public BigDecimal calcularFrete() {
         // R$10,00 é o valor fixo para o cálculo

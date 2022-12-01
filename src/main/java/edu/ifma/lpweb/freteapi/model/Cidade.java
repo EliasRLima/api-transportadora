@@ -1,10 +1,22 @@
 package edu.ifma.lpweb.freteapi.model;
 
-import javax.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cidade {
 
     @Id
@@ -14,39 +26,6 @@ public class Cidade {
     private String nome;
     private String uf;
     private BigDecimal taxa;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return this.nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getUf() {
-        return this.uf;
-    }
-
-
-    public void setUf(String uf) {
-        this.uf = uf;
-    }
-
-    public BigDecimal getTaxa() {
-        return this.taxa;
-    }
-
-    public void setTaxa(BigDecimal taxa) {
-        this.taxa = taxa;
-    }
 
     @Override
     public boolean equals(Object o) {

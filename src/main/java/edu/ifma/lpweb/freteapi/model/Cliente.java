@@ -1,58 +1,32 @@
 package edu.ifma.lpweb.freteapi.model;
 
 
-import org.hibernate.validator.constraints.Length;
+import jakarta.annotation.Nonnull;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.Getter;
+import lombok.Setter;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
+@Getter
+@Setter
 public class Cliente {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotNull @NotEmpty @Length(min = 3, max = 200)
+    @Nonnull
     private String nome;
 
     private String endereco;
 
-    @NotEmpty @Length(min = 8, message = "Deve possuir {min} dígitos no mínimo")
+    @Nonnull
     private String telefone;
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
 
     @Override
     public boolean equals(Object o) {
