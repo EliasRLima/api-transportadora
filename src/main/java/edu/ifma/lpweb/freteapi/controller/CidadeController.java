@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import edu.ifma.lpweb.freteapi.model.Cidade;
 import edu.ifma.lpweb.freteapi.model.Cliente;
 import edu.ifma.lpweb.freteapi.service.CidadeService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
@@ -13,7 +14,6 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.net.URI;
 import java.util.List;

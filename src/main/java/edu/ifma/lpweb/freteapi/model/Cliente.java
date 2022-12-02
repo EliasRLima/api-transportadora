@@ -1,14 +1,11 @@
 package edu.ifma.lpweb.freteapi.model;
 
 
-import jakarta.annotation.Nonnull;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
@@ -20,12 +17,12 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Nonnull
+    @NotNull
     private String nome;
 
     private String endereco;
 
-    @Nonnull
+    @NotNull
     private String telefone;
 
     @Override

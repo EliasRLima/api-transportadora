@@ -13,11 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
+import jakarta.validation.Valid;
 
-import javax.validation.Valid;
 import java.lang.reflect.Field;
 import java.net.URI;
-import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -32,20 +31,6 @@ public class ClienteController {
         this.clienteService = clienteService;
     }
 
-    // versao 01
- /*
-  @GetMapping
-  public List<Cliente> lista(String nome ) {
-        if (nome == null ) {
-            return clienteService.todos();
-        } else {
-            return clienteService.buscaPor(nome );
-        }
-    }
-
-  */
-// versao 02
-
     @GetMapping
     public Page<Cliente> lista(@RequestParam(required = false) String nome,
                                @PageableDefault(sort = "id", direction = Sort.Direction.ASC, page = 0, size = 5)
@@ -59,17 +44,6 @@ public class ClienteController {
         }
     }
 
-
-
-    //versao 01
-
- /*   @GetMapping("/{id}")
-    public Cliente buscaPor(@PathVariable Integer id ) {
-        return clienteService.buscaPor(id ).get();
-    }
-*/
-    //versao 02
-
     @GetMapping("/{id}")
     public ResponseEntity<Cliente> buscaPor(@PathVariable Integer id) {
         Optional<Cliente> optional = clienteService.buscaPor(id);
@@ -80,14 +54,6 @@ public class ClienteController {
             return ResponseEntity.notFound().build();
         }
     }
-
-    /*
-    // versão 01
-    @PostMapping
-    public Cliente cadastrar(@RequestBody Cliente cliente ) {
-        return clienteService.salva(cliente );
-    }
-*/
 
     @PostMapping
     public ResponseEntity<Cliente> cadastro(@RequestBody @Valid Cliente cliente,
