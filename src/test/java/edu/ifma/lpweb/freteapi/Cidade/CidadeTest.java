@@ -28,16 +28,14 @@ public class CidadeTest {
     private CidadeService cidadeService;
 
     @Test
-    public void injectedComponentsAreNotNull(){
+    public void garantirComponentesNaoNulos(){
         assertThat(cidadeService, IsNull.notNullValue());
         assertThat(cidadeRepository, IsNull.notNullValue());
     }
 
     @Test
     public void verificaSalvaCidade(){
-        List<Cidade> cidadesRetornoService = cidadeService.todos();
-        List<Cidade> cidadesRetornoRepository = cidadeRepository.findAll();
-        assertEquals(cidadesRetornoService.size(), cidadesRetornoRepository.size());
+        List<Cidade> buscaTodosAntesSalvar = cidadeService.todos();
 
         cidadeService.salva(new Cidade(10, "Rosario", "MA", BigDecimal.valueOf(10.5)));
         Optional<Cidade> cidade = cidadeService.buscaPor(10);
@@ -47,11 +45,8 @@ public class CidadeTest {
         cidade = cidadeRepository.findById(11);
         assertTrue(cidade.isPresent());
 
-        int idCidade = 1;
-        Optional<Cidade> cidadeRetornoService = cidadeService.buscaPor(idCidade);
-        Optional<Cidade> cidadeRetornoRepository = cidadeRepository.findById(idCidade);
-        assertEquals(cidadeRetornoRepository.isPresent(), cidadeRetornoService.isPresent());
-        assertEquals(cidadeRetornoRepository.get().getId(), cidadeRetornoService.get().getId());
+        List<Cidade> buscaTodosDepoisSalvar = cidadeService.todos();
+        assertTrue(buscaTodosDepoisSalvar.size() > buscaTodosAntesSalvar.size());
 
     }
 
